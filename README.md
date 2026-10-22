@@ -30,8 +30,8 @@ cargo test     # run the tests on your machine
 Install the package in Hammer on desktop: Settings, Plugins, Install plugin. Pick the `.hammerplugin`,
 approve its permissions, and restart Hammer.
 
-The kit isn't on crates.io yet, so `Cargo.toml` takes it from the SDK's repository at a release tag. To
-move to a newer kit, change the `tag`.
+The kit is [`hammer-plugin-kit`](https://crates.io/crates/hammer-plugin-kit) on crates.io, used as
+`hammer`. To move to a newer kit, change its `version` in `Cargo.toml`.
 
 ## Layout
 

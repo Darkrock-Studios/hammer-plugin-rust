@@ -14,21 +14,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # While hammer-plugin-sdk is private, a token that can read it. Once it's public, delete the secret.
-      SDK_TOKEN: ${{ secrets.SDK_TOKEN }}
     steps:
       - uses: actions/checkout@v6
 
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
-
-      - name: Read the private SDK
-        if: env.SDK_TOKEN != ''
-        run: |
-          git config --global url."https://x-access-token:${SDK_TOKEN}@github.com/Darkrock-Studios/".insteadOf "https://github.com/Darkrock-Studios/"
-          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> "$GITHUB_ENV"
 
       - name: Test
         run: cargo test
