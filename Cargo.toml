@@ -1,0 +1,19 @@
+[package]
+name = "word-count"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# The kit isn't on crates.io yet, so it comes from the SDK at a release tag.
+hammer = { git = "https://github.com/Darkrock-Studios/hammer-plugin-sdk", tag = "v0.5.0" }
+serde = { version = "1", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
