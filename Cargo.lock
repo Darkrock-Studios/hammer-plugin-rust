@@ -3,9 +3,10 @@
 version = 4
 
 [[package]]
-name = "hammer"
-version = "0.2.0"
-source = "git+https://github.com/Darkrock-Studios/hammer-plugin-sdk?tag=v0.5.0#a3f8f0f2e98c1fa5399013eb39fa20d8ef15f1e8"
+name = "hammer-plugin-kit"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c13ea621d5bae7b69adedebd74c51186458083987661caa8b205fc470e10a0d8"
 dependencies = [
  "serde",
  "serde_json",
@@ -105,7 +106,7 @@ checksum = "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
 name = "word-count"
 version = "0.1.0"
 dependencies = [
- "hammer",
+ "hammer-plugin-kit",
  "serde",
 ]
 
