@@ -7,7 +7,7 @@ edition = "2024"
 crate-type = ["cdylib"]
 
 [dependencies]
-hammer = { package = "hammer-plugin-kit", version = "0.6" }
+hammer = { package = "hammer-plugin-kit", version = "0.7" }
 serde = { version = "1", features = ["derive"] }
 
 [profile.release]
