@@ -40,7 +40,7 @@ fn count_words(request: &Request) -> hammer::Result<Reply> {
     for (i, scene) in scenes.iter().enumerate() {
         hammer::progress(Some(i as f64 / scenes.len() as f64), Some(&format!("Counting {}", scene.name)));
         let text = ops::scene::read(&request.project, scene.id)?;
-        counts.push((scene.name.clone(), words_in(&text.markdown)));
+        counts.push((scene.name.clone(), hammer::words(&text.markdown).count()));
     }
     let mut reply = Reply::document(report(&counts));
     if let Some(page) = reply.page.as_mut() {
@@ -75,10 +75,6 @@ fn report(counts: &[(String, usize)]) -> String {
     markdown
 }
 
-/// Words are runs that hold at least one letter or digit, so dashes and stray punctuation don't count.
-fn words_in(text: &str) -> usize {
-    text.split_whitespace().filter(|word| word.chars().any(char::is_alphanumeric)).count()
-}
 
 #[cfg(test)]
 mod tests {
@@ -112,10 +108,5 @@ mod tests {
         let counts = [("Storm".to_string(), 3), ("Calm".to_string(), 1)];
         assert_eq!(report(&counts), "# Word count\n\n- Storm: 3\n- Calm: 1\n\n**Total: 4**\n");
         assert_eq!(report(&counts[..1]), "# Word count\n\n- Storm: 3\n");
-    }
-
-    #[test]
-    fn words_are_runs_of_letters_and_digits() {
-        assert_eq!(words_in("She said — twice — “no.”"), 4);
     }
 }
