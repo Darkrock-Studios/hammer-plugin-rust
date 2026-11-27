@@ -4,9 +4,9 @@ version = 4
 
 [[package]]
 name = "hammer-plugin-kit"
-version = "0.8.0"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b98065af36411018c33ffd77752c0a29f69f188a8cd99ec306d675304de70e35"
+checksum = "71f70b66d3eb026d1557fe4a310e16556ae2d9d02d5925379992a086c37de12c"
 dependencies = [
  "serde",
  "serde_json",
